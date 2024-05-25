@@ -10,9 +10,9 @@
     --bg-color:#f4f6fa;
     --purple: #a729f5;
     --primary-text-color: #313e51;
-    --secundari-text-color: #626c7f;
+    --secondary-text-color: #626c7f;
     --button-bg: #fff;
-    --shadow: 0px 16 px 40 px 0 px rgba(143, 160, 193, 0.14 );
+    --shadow: 0px 16px 40px 0px rgba(143, 160, 193, 0.14 );
     --bg-html:#fff1e9;
     --bg-css: #e0fdef;
     --bg-javascript:#ebf0ff;
@@ -20,6 +20,16 @@
     --white: #ffffff;
     --bg-mobile: url(./assets/images/pattern-background-mobile-light.svg);
     --bg-desktop: url(./assets/images/pattern-background-desktop-light.svg);
+}
+
+body.escuro{
+    --bg-color: #313e51;
+    --bg-mobile: url(./assets/images/pattern-background-mobile-dark.svg);
+    --bg-desktop: url(./assets/images/pattern-background-desktop-dark.svg);
+    --primary-text-color: #fff;
+    --secondary-text-color: #abc1e1;
+    --button-bg: #3b4d66;
+    --shadow:  0px 16px 40px 0px rgba(49,62,81, 0.14);
 }
 
 body{
@@ -85,7 +95,7 @@ main{
 }
 
 .boas_vindas p{
-    color: var(--seecundari-text-color);
+    color: var(--secondary-text-color);
     font-size:14px;
     line-height: 150%;
     font-style: italic;
