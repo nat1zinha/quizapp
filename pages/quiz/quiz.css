@@ -161,6 +161,24 @@ main{
     }
 }
 
+.alternativas label#correta{
+    outline: 3px solid var(--green);
+
+    & span{
+        background: var(--green);
+        color: white;
+    }
+}
+
+.alternativas label#errada{
+    outline: 3px solid var(--red);
+
+    & span{
+        background: var(--red);
+        color: var(--white);
+    }
+}
+
 .alternativas input{
     display: none;
 }
@@ -176,7 +194,7 @@ main{
     width: 40px;
     height: 40px;
     background: var(--bg-color);
-    border-radius: 5px;
+    border-radius: 5lpx;
     color: var(--secondary-text-color);
 
     display: flex;
