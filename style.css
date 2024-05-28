@@ -122,6 +122,7 @@ main{
     box-shadow: var(--shadow);
     font-weight: 500;
     color: var(--primary-text-color);
+    cursor: pointer;
 }
 
 .assuntos button div{
