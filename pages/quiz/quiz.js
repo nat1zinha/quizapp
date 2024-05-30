@@ -66,8 +66,7 @@ function montarPergunta(){
             <section class="alternativas">
                 <form action="">
                     <label for="alternativa_a" >
-                        <input type="radio" id="alternativa_a" name="alternativa" value="                            ${alterarSinais(quiz.questions[pergunta-1].options[0])}
-                        ">
+                        <input type="radio" id="alternativa_a" name="alternativa" value="${alterarSinais(quiz.questions[pergunta-1].options[0])}">
 
                         <div>
                             <span>A</span>
@@ -103,7 +102,7 @@ function montarPergunta(){
                     </label>
                 </form>
 
-                <button>Enviar</button>
+                <button>Responder</button>
             </section>
     `
 }
@@ -121,20 +120,42 @@ function guardarResposta(evento){
 }
 
 function validarResposta(){
+    const botaoEnviar = document.querySelector(".alternativas button")
+    botaoEnviar.innerHTML = "Próxima"
+    botaoEnviar.removeEventListener("click", validarResposta)
+
+    if (pergunta === 10){
+        botaoEnviar.innerHTML = "Finalizar"
+        botaoEnviar.addEventListener("click", finalizar)
+    }else{
+        botaoEnviar.addEventListener("click",proximaPergunta)
+
+    }
+    
     if (resposta === quiz.questions[pergunta - 1 ].answer){
         document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "correta")
-        pontos = pontos +1
+        pontos = pontos + 1
     }else{
         document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "errada")
         document.querySelector(`label[for='${respostaCorretaId}']`).setAttribute("id", "correta")
     }
+
+    pergunta = pergunta + 1
+    console.log(pergunta)
 }
 
- async function iniciar(){
-    alterarAssunto()
-    await buscarPerguntas()
-    montarPergunta()
+function finalizar(){
+    localStorage.setItem("ponto", pontos)
 
+    window.location.href = "../resultado/resultado.html"
+}
+
+function proximaPergunta(){
+    montarPergunta()
+    adicionarEventoInputs()
+}
+
+function adicionarEventoInputs(){
     const inputResposta = document.querySelectorAll(".alternativas input")
     inputResposta.forEach(input =>{
         input.addEventListener("click", guardarResposta)
@@ -144,6 +165,15 @@ function validarResposta(){
 
         }
     })
+}
+
+ async function iniciar(){
+    alterarAssunto()
+    await buscarPerguntas()
+    montarPergunta()
+    adicionarEventoInputs()
+
+   
 }
 
 iniciar()
