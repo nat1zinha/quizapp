@@ -131,7 +131,7 @@ function validarResposta(){
         botaoEnviar.addEventListener("click",proximaPergunta)
 
     }
-    
+
     if (resposta === quiz.questions[pergunta - 1 ].answer){
         document.querySelector(`label[for='${idInputResposta}']`).setAttribute("id", "correta")
         pontos = pontos + 1
@@ -145,7 +145,7 @@ function validarResposta(){
 }
 
 function finalizar(){
-    localStorage.setItem("ponto", pontos)
+    localStorage.setItem("pontos", pontos)
 
     window.location.href = "../resultado/resultado.html"
 }
